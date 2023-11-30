@@ -15,12 +15,24 @@ public class LoginPage {
         webDriver = driver;
     }
 
-    @FindBy(xpath = "//input[@id='input-email']")
+    @FindBy(xpath = "//input[@id='tbUser']")
     private WebElement email;
+    @FindBy(xpath = "//input[@id='tbPassword']")
+    private WebElement password;
+    @FindBy(xpath = "//input[@id='btnLogin']")
+    private WebElement buttonLogin;
+    @FindBy(xpath = "//h5[@id='myModalHead']")
+    private WebElement errorNotification;
+    @FindBy(xpath = "//input[@id='btnOK']")
+    public static WebElement buttonClose;
 
 //------------------------------------------------
     public void setEmail(String usrName) {
         email.sendKeys(usrName);
+    }
+
+    public boolean emailDisplayed() {
+        return email.isDisplayed();
     }
 
     public void setPassword(String psword) {
@@ -29,6 +41,14 @@ public class LoginPage {
 
     public void clickButtonLogin() {
         buttonLogin.click();
+    }
+
+    public String errorPassword() {
+        return errorNotification.getText();
+    }
+
+    public void closeBtnLoginSuccess() {
+        buttonClose.click();
     }
 
 }
