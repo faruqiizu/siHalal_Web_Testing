@@ -10,10 +10,10 @@ Feature: User Login
 
   @UserLogin
   @Negative-case
-  Scenario Outline: Login with invalid data
+  Scenario Outline: Login with valid or invalid data and invalid input
     Given User open the website siHalal
-    When User input <email> as email <pw> as password
-    Then User see popup error message and message contain "Login failed"
+    When User input <email> as email <pw> as password before click Login
+    Then User see popup error message and message contain Login failed
     Examples:
       | email                 | pw            |
       | sukendarawi@gmail.com |               |

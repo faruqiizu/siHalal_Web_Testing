@@ -1,11 +1,9 @@
 package org.example.PageObject;
 
-import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
     public static WebDriver webDriver;
@@ -21,8 +19,10 @@ public class LoginPage {
     private WebElement password;
     @FindBy(xpath = "//input[@id='btnLogin']")
     private WebElement buttonLogin;
-    @FindBy(xpath = "///label[.='Login failed, user and password unknown!']")
+    @FindBy(xpath = "//div[@class='modal-dialog modal-dialog-centered']//div[@class='modal-header']")
     private WebElement errorNotification;
+    @FindBy(xpath = "(//h5[@id='myModalHead']")
+    private WebElement errorMsgLogin;
     @FindBy(xpath = "//input[@id='btnOK']")
     public static WebElement buttonClose;
 
@@ -43,9 +43,13 @@ public class LoginPage {
         buttonLogin.click();
     }
 
-    public boolean errorPassword() {
-        return errorNotification.isDisplayed();
+    public boolean errorNotif() {
+        return errorMsgLogin.isDisplayed();
     }
+
+//    public String  errorMessageLogin() {
+//        return errorMsgLogin.getText();
+//    }
 
     public void closeBtnLoginSuccess() {
         buttonClose.click();

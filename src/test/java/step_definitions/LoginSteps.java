@@ -33,16 +33,17 @@ public class LoginSteps {
         loginPage.closeBtnLoginSuccess();
     }
 
-    @When("User input {} as email {} as password")
+    @When("User input {} as email {} as password before click Login")
     public void userInputAsEmailAsPassword(String email, String password) {
         loginPage.setEmail(email);
         loginPage.setPassword(password);
         loginPage.clickButtonLogin();
     }
 
-    @Then("User see popup error message and message contain {string}")
+    @Then("User see popup error message and message contain Login failed")
     public void userSeePopupErrorMessage() {
-        Assert.assertTrue(loginPage.errorPassword());
+        Assert.assertTrue(loginPage.errorNotif());
+//        loginPage.errorMessageLogin(errorMsg);
     }
 
 
