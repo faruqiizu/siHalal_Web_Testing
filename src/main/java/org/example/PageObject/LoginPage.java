@@ -21,7 +21,7 @@ public class LoginPage {
     private WebElement password;
     @FindBy(xpath = "//input[@id='btnLogin']")
     private WebElement buttonLogin;
-    @FindBy(xpath = "//h5[@id='myModalHead']")
+    @FindBy(xpath = "///label[.='Login failed, user and password unknown!']")
     private WebElement errorNotification;
     @FindBy(xpath = "//input[@id='btnOK']")
     public static WebElement buttonClose;
@@ -43,8 +43,8 @@ public class LoginPage {
         buttonLogin.click();
     }
 
-    public String errorPassword() {
-        return errorNotification.getText();
+    public boolean errorPassword() {
+        return errorNotification.isDisplayed();
     }
 
     public void closeBtnLoginSuccess() {
